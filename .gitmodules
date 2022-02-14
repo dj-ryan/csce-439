@@ -1,0 +1,3 @@
+[submodule "shared/catkin_ws/src/balboa_controller"]
+	path = shared/catkin_ws/src/balboa_controller
+	url = https://github.com/dj-ryan/balboa-controller.git
