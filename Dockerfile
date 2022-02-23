@@ -5,6 +5,12 @@
 # Carrick Detweiler, 2022
 
 #Official images: https://hub.docker.com/_/ros/
+
+# # For Alpine Linux:
+# RUN apk add dos2unix
+# For Ubuntu:
+
+
 FROM ros:melodic
 
 ENV DEBIAN_FRONTEND=noninteractive
@@ -23,8 +29,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
   && rm -rf /var/lib/apt/lists/*
 
 
+
+
 # Install some helpful utilities
 RUN apt-get update && apt-get install -y --no-install-recommends \
+    dos2unix \
     nano \
     vim \
     git \
@@ -51,6 +60,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     socat \
     && rm -rf /var/lib/apt/lists/*
 
+# RUN dos2unix ./tigervnc-start.sh
 
 #Python serial libraries
 RUN pip3 install setuptools
