@@ -1,5 +1,4 @@
 #!/bin/bash
-sleep 365d
 
 #
 # Carrick Detweiler 2022

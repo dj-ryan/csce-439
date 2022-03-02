@@ -1,6 +1,4 @@
 #!/bin/bash
-sleep 365d
-
 set -e
 
 mkdir -p "$HOME/.vnc"
