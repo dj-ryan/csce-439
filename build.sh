@@ -19,6 +19,8 @@
 
 # C:\Users\its-student\AppData\Local\Programs\Python\Python310 - \Scripts
 # C:\Program Files\Docker\Docker\rescorces\bin
+# C:\Program Files\Git\bin
+
 
 
 
