@@ -26,6 +26,9 @@
 
 
 # HELPFUL COMMANDS:
+
+# docker system prune -a
+
 # source devel/setup.bash 	#rebase / build workspace before catkin_make / building new code
 
 # source /opt/ros/melodic/setup.bash
