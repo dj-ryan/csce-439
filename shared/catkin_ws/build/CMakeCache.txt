@@ -264,7 +264,7 @@ RT_LIBRARY:FILEPATH=/usr/lib/x86_64-linux-gnu/librt.so
 SETUPTOOLS_DEB_LAYOUT:BOOL=ON
 
 //Name of the computer/site where compile is being run
-SITE:STRING=928d5c98ad5c
+SITE:STRING=9cca60b76f10
 
 //LSB Distrib tag
 UBUNTU:BOOL=TRUE
@@ -283,12 +283,6 @@ _gtest_INCLUDES:FILEPATH=/usr/include/gtest/gtest.h
 
 //Path to a file.
 _gtest_SOURCES:FILEPATH=/usr/src/gtest/src/gtest.cc
-
-//Value Computed by CMake
-balboa_controller_BINARY_DIR:STATIC=/home/shared/catkin_ws/build/balboa_controller
-
-//Value Computed by CMake
-balboa_controller_SOURCE_DIR:STATIC=/home/shared/catkin_ws/src/balboa_controller
 
 //Value Computed by CMake
 balboa_core_BINARY_DIR:STATIC=/home/shared/catkin_ws/build/balboa_core
@@ -319,9 +313,6 @@ gennodejs_DIR:PATH=/opt/ros/melodic/share/gennodejs/cmake
 
 //The directory containing a CMake configuration file for genpy.
 genpy_DIR:PATH=/opt/ros/melodic/share/genpy/cmake
-
-//The directory containing a CMake configuration file for geometry_msgs.
-geometry_msgs_DIR:PATH=/opt/ros/melodic/share/geometry_msgs/cmake
 
 //Value Computed by CMake
 gmock_BINARY_DIR:STATIC=/home/shared/catkin_ws/build/gtest/googlemock
@@ -371,6 +362,12 @@ gtest_hide_internal_symbols:BOOL=OFF
 
 //Dependencies for the target
 gtest_main_LIB_DEPENDS:STATIC=general;-lpthread;general;gtest;
+
+//Value Computed by CMake
+hw2stats_BINARY_DIR:STATIC=/home/shared/catkin_ws/build/hw2stats
+
+//Value Computed by CMake
+hw2stats_SOURCE_DIR:STATIC=/home/shared/catkin_ws/src/hw2stats
 
 //Path to a library.
 lib:FILEPATH=/opt/ros/melodic/lib/libxmlrpcpp.so
