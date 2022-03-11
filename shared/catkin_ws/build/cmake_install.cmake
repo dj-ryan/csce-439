@@ -131,6 +131,7 @@ endif()
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   include("/home/shared/catkin_ws/build/gtest/cmake_install.cmake")
+  include("/home/shared/catkin_ws/build/balboa_controller/cmake_install.cmake")
   include("/home/shared/catkin_ws/build/balboa_core/cmake_install.cmake")
   include("/home/shared/catkin_ws/build/hw2stats/cmake_install.cmake")
 

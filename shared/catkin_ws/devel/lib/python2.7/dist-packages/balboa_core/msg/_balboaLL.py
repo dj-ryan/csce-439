@@ -9,7 +9,7 @@ import struct
 import std_msgs.msg
 
 class balboaLL(genpy.Message):
-  _md5sum = "0a0a3ddad915416071f2d2213a371653"
+  _md5sum = "36b86d230f7daf8cf20eff01d9c0432f"
   _type = "balboa_core/balboaLL"
   _has_header = True  # flag to mark the presence of a Header object
   _full_text = """Header header
@@ -25,7 +25,12 @@ int32 speedLeft
 int32 speedRight
 int32 distanceLeft
 int32 distanceRight
-
+int32 IRsensor1 ## Added by group ##
+int32 IRsensor2 ## Added by group ##
+int32 IRsensor3 ## Added by group ##
+int32 IRsensor4 ## Added by group ##
+int32 IRsensor5 ## Added by group ##
+int32 rangeSensor ## Added by group ##
 
 ================================================================================
 MSG: std_msgs/Header
@@ -43,8 +48,8 @@ time stamp
 #Frame this data is associated with
 string frame_id
 """
-  __slots__ = ['header','arduinoMillis','batteryMillivolts','angleY','angleX','angleZ','driveLeft','driveRight','speedLeft','speedRight','distanceLeft','distanceRight']
-  _slot_types = ['std_msgs/Header','int32','int32','int32','int32','int32','int32','int32','int32','int32','int32','int32']
+  __slots__ = ['header','arduinoMillis','batteryMillivolts','angleY','angleX','angleZ','driveLeft','driveRight','speedLeft','speedRight','distanceLeft','distanceRight','IRsensor1','IRsensor2','IRsensor3','IRsensor4','IRsensor5','rangeSensor']
+  _slot_types = ['std_msgs/Header','int32','int32','int32','int32','int32','int32','int32','int32','int32','int32','int32','int32','int32','int32','int32','int32','int32']
 
   def __init__(self, *args, **kwds):
     """
@@ -54,7 +59,7 @@ string frame_id
     changes.  You cannot mix in-order arguments and keyword arguments.
 
     The available fields are:
-       header,arduinoMillis,batteryMillivolts,angleY,angleX,angleZ,driveLeft,driveRight,speedLeft,speedRight,distanceLeft,distanceRight
+       header,arduinoMillis,batteryMillivolts,angleY,angleX,angleZ,driveLeft,driveRight,speedLeft,speedRight,distanceLeft,distanceRight,IRsensor1,IRsensor2,IRsensor3,IRsensor4,IRsensor5,rangeSensor
 
     :param args: complete set of field values, in .msg order
     :param kwds: use keyword arguments corresponding to message field names
@@ -87,6 +92,18 @@ string frame_id
         self.distanceLeft = 0
       if self.distanceRight is None:
         self.distanceRight = 0
+      if self.IRsensor1 is None:
+        self.IRsensor1 = 0
+      if self.IRsensor2 is None:
+        self.IRsensor2 = 0
+      if self.IRsensor3 is None:
+        self.IRsensor3 = 0
+      if self.IRsensor4 is None:
+        self.IRsensor4 = 0
+      if self.IRsensor5 is None:
+        self.IRsensor5 = 0
+      if self.rangeSensor is None:
+        self.rangeSensor = 0
     else:
       self.header = std_msgs.msg.Header()
       self.arduinoMillis = 0
@@ -100,6 +117,12 @@ string frame_id
       self.speedRight = 0
       self.distanceLeft = 0
       self.distanceRight = 0
+      self.IRsensor1 = 0
+      self.IRsensor2 = 0
+      self.IRsensor3 = 0
+      self.IRsensor4 = 0
+      self.IRsensor5 = 0
+      self.rangeSensor = 0
 
   def _get_types(self):
     """
@@ -122,7 +145,7 @@ string frame_id
         length = len(_x)
       buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
       _x = self
-      buff.write(_get_struct_11i().pack(_x.arduinoMillis, _x.batteryMillivolts, _x.angleY, _x.angleX, _x.angleZ, _x.driveLeft, _x.driveRight, _x.speedLeft, _x.speedRight, _x.distanceLeft, _x.distanceRight))
+      buff.write(_get_struct_17i().pack(_x.arduinoMillis, _x.batteryMillivolts, _x.angleY, _x.angleX, _x.angleZ, _x.driveLeft, _x.driveRight, _x.speedLeft, _x.speedRight, _x.distanceLeft, _x.distanceRight, _x.IRsensor1, _x.IRsensor2, _x.IRsensor3, _x.IRsensor4, _x.IRsensor5, _x.rangeSensor))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -152,8 +175,8 @@ string frame_id
         self.header.frame_id = str[start:end]
       _x = self
       start = end
-      end += 44
-      (_x.arduinoMillis, _x.batteryMillivolts, _x.angleY, _x.angleX, _x.angleZ, _x.driveLeft, _x.driveRight, _x.speedLeft, _x.speedRight, _x.distanceLeft, _x.distanceRight,) = _get_struct_11i().unpack(str[start:end])
+      end += 68
+      (_x.arduinoMillis, _x.batteryMillivolts, _x.angleY, _x.angleX, _x.angleZ, _x.driveLeft, _x.driveRight, _x.speedLeft, _x.speedRight, _x.distanceLeft, _x.distanceRight, _x.IRsensor1, _x.IRsensor2, _x.IRsensor3, _x.IRsensor4, _x.IRsensor5, _x.rangeSensor,) = _get_struct_17i().unpack(str[start:end])
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e)  # most likely buffer underfill
@@ -175,7 +198,7 @@ string frame_id
         length = len(_x)
       buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
       _x = self
-      buff.write(_get_struct_11i().pack(_x.arduinoMillis, _x.batteryMillivolts, _x.angleY, _x.angleX, _x.angleZ, _x.driveLeft, _x.driveRight, _x.speedLeft, _x.speedRight, _x.distanceLeft, _x.distanceRight))
+      buff.write(_get_struct_17i().pack(_x.arduinoMillis, _x.batteryMillivolts, _x.angleY, _x.angleX, _x.angleZ, _x.driveLeft, _x.driveRight, _x.speedLeft, _x.speedRight, _x.distanceLeft, _x.distanceRight, _x.IRsensor1, _x.IRsensor2, _x.IRsensor3, _x.IRsensor4, _x.IRsensor5, _x.rangeSensor))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -206,8 +229,8 @@ string frame_id
         self.header.frame_id = str[start:end]
       _x = self
       start = end
-      end += 44
-      (_x.arduinoMillis, _x.batteryMillivolts, _x.angleY, _x.angleX, _x.angleZ, _x.driveLeft, _x.driveRight, _x.speedLeft, _x.speedRight, _x.distanceLeft, _x.distanceRight,) = _get_struct_11i().unpack(str[start:end])
+      end += 68
+      (_x.arduinoMillis, _x.batteryMillivolts, _x.angleY, _x.angleX, _x.angleZ, _x.driveLeft, _x.driveRight, _x.speedLeft, _x.speedRight, _x.distanceLeft, _x.distanceRight, _x.IRsensor1, _x.IRsensor2, _x.IRsensor3, _x.IRsensor4, _x.IRsensor5, _x.rangeSensor,) = _get_struct_17i().unpack(str[start:end])
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e)  # most likely buffer underfill
@@ -216,12 +239,12 @@ _struct_I = genpy.struct_I
 def _get_struct_I():
     global _struct_I
     return _struct_I
-_struct_11i = None
-def _get_struct_11i():
-    global _struct_11i
-    if _struct_11i is None:
-        _struct_11i = struct.Struct("<11i")
-    return _struct_11i
+_struct_17i = None
+def _get_struct_17i():
+    global _struct_17i
+    if _struct_17i is None:
+        _struct_17i = struct.Struct("<17i")
+    return _struct_17i
 _struct_3I = None
 def _get_struct_3I():
     global _struct_3I

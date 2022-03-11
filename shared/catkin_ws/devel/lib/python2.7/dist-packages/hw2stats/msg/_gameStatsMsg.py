@@ -14,9 +14,13 @@ class gameStatsMsg(genpy.Message):
   _has_header = True  # flag to mark the presence of a Header object
   _full_text = """Header header
 
+# total passes compleated
 float32 passCompleationPercentage
+# total passes dropped
 float32 passIncompletionPercentage
+# total rushing yards
 float32 totalRushingYards
+# total passing yards
 float32 totalPassingYards
 
 ================================================================================

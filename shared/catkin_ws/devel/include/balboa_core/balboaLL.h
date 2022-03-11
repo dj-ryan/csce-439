@@ -36,7 +36,13 @@ struct balboaLL_
     , speedLeft(0)
     , speedRight(0)
     , distanceLeft(0)
-    , distanceRight(0)  {
+    , distanceRight(0)
+    , IRsensor1(0)
+    , IRsensor2(0)
+    , IRsensor3(0)
+    , IRsensor4(0)
+    , IRsensor5(0)
+    , rangeSensor(0)  {
     }
   balboaLL_(const ContainerAllocator& _alloc)
     : header(_alloc)
@@ -50,7 +56,13 @@ struct balboaLL_
     , speedLeft(0)
     , speedRight(0)
     , distanceLeft(0)
-    , distanceRight(0)  {
+    , distanceRight(0)
+    , IRsensor1(0)
+    , IRsensor2(0)
+    , IRsensor3(0)
+    , IRsensor4(0)
+    , IRsensor5(0)
+    , rangeSensor(0)  {
   (void)_alloc;
     }
 
@@ -92,6 +104,24 @@ struct balboaLL_
    typedef int32_t _distanceRight_type;
   _distanceRight_type distanceRight;
 
+   typedef int32_t _IRsensor1_type;
+  _IRsensor1_type IRsensor1;
+
+   typedef int32_t _IRsensor2_type;
+  _IRsensor2_type IRsensor2;
+
+   typedef int32_t _IRsensor3_type;
+  _IRsensor3_type IRsensor3;
+
+   typedef int32_t _IRsensor4_type;
+  _IRsensor4_type IRsensor4;
+
+   typedef int32_t _IRsensor5_type;
+  _IRsensor5_type IRsensor5;
+
+   typedef int32_t _rangeSensor_type;
+  _rangeSensor_type rangeSensor;
+
 
 
 
@@ -132,7 +162,13 @@ bool operator==(const ::balboa_core::balboaLL_<ContainerAllocator1> & lhs, const
     lhs.speedLeft == rhs.speedLeft &&
     lhs.speedRight == rhs.speedRight &&
     lhs.distanceLeft == rhs.distanceLeft &&
-    lhs.distanceRight == rhs.distanceRight;
+    lhs.distanceRight == rhs.distanceRight &&
+    lhs.IRsensor1 == rhs.IRsensor1 &&
+    lhs.IRsensor2 == rhs.IRsensor2 &&
+    lhs.IRsensor3 == rhs.IRsensor3 &&
+    lhs.IRsensor4 == rhs.IRsensor4 &&
+    lhs.IRsensor5 == rhs.IRsensor5 &&
+    lhs.rangeSensor == rhs.rangeSensor;
 }
 
 template<typename ContainerAllocator1, typename ContainerAllocator2>
@@ -189,12 +225,12 @@ struct MD5Sum< ::balboa_core::balboaLL_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "0a0a3ddad915416071f2d2213a371653";
+    return "36b86d230f7daf8cf20eff01d9c0432f";
   }
 
   static const char* value(const ::balboa_core::balboaLL_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0x0a0a3ddad9154160ULL;
-  static const uint64_t static_value2 = 0x71f2d2213a371653ULL;
+  static const uint64_t static_value1 = 0x36b86d230f7daf8cULL;
+  static const uint64_t static_value2 = 0xf20eff01d9c0432fULL;
 };
 
 template<class ContainerAllocator>
@@ -226,7 +262,12 @@ struct Definition< ::balboa_core::balboaLL_<ContainerAllocator> >
 "int32 speedRight\n"
 "int32 distanceLeft\n"
 "int32 distanceRight\n"
-"\n"
+"int32 IRsensor1 ## Added by group ##\n"
+"int32 IRsensor2 ## Added by group ##\n"
+"int32 IRsensor3 ## Added by group ##\n"
+"int32 IRsensor4 ## Added by group ##\n"
+"int32 IRsensor5 ## Added by group ##\n"
+"int32 rangeSensor ## Added by group ##\n"
 "\n"
 "================================================================================\n"
 "MSG: std_msgs/Header\n"
@@ -273,6 +314,12 @@ namespace serialization
       stream.next(m.speedRight);
       stream.next(m.distanceLeft);
       stream.next(m.distanceRight);
+      stream.next(m.IRsensor1);
+      stream.next(m.IRsensor2);
+      stream.next(m.IRsensor3);
+      stream.next(m.IRsensor4);
+      stream.next(m.IRsensor5);
+      stream.next(m.rangeSensor);
     }
 
     ROS_DECLARE_ALLINONE_SERIALIZER
@@ -316,6 +363,18 @@ struct Printer< ::balboa_core::balboaLL_<ContainerAllocator> >
     Printer<int32_t>::stream(s, indent + "  ", v.distanceLeft);
     s << indent << "distanceRight: ";
     Printer<int32_t>::stream(s, indent + "  ", v.distanceRight);
+    s << indent << "IRsensor1: ";
+    Printer<int32_t>::stream(s, indent + "  ", v.IRsensor1);
+    s << indent << "IRsensor2: ";
+    Printer<int32_t>::stream(s, indent + "  ", v.IRsensor2);
+    s << indent << "IRsensor3: ";
+    Printer<int32_t>::stream(s, indent + "  ", v.IRsensor3);
+    s << indent << "IRsensor4: ";
+    Printer<int32_t>::stream(s, indent + "  ", v.IRsensor4);
+    s << indent << "IRsensor5: ";
+    Printer<int32_t>::stream(s, indent + "  ", v.IRsensor5);
+    s << indent << "rangeSensor: ";
+    Printer<int32_t>::stream(s, indent + "  ", v.rangeSensor);
   }
 };
 

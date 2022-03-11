@@ -1,2 +1,2 @@
-balboa_core:hw2stats
+balboa_controller:balboa_core:hw2stats
 -DCATKIN_DEVEL_PREFIX=/home/shared/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/home/shared/catkin_ws/install -G Unix Makefiles

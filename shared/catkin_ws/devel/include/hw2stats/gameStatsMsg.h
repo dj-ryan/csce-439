@@ -173,9 +173,13 @@ struct Definition< ::hw2stats::gameStatsMsg_<ContainerAllocator> >
   {
     return "Header header\n"
 "\n"
+"# total passes compleated\n"
 "float32 passCompleationPercentage\n"
+"# total passes dropped\n"
 "float32 passIncompletionPercentage\n"
+"# total rushing yards\n"
 "float32 totalRushingYards\n"
+"# total passing yards\n"
 "float32 totalPassingYards\n"
 "\n"
 "================================================================================\n"

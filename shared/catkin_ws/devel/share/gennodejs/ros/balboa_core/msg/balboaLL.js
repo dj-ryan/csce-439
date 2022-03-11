@@ -31,6 +31,12 @@ class balboaLL {
       this.speedRight = null;
       this.distanceLeft = null;
       this.distanceRight = null;
+      this.IRsensor1 = null;
+      this.IRsensor2 = null;
+      this.IRsensor3 = null;
+      this.IRsensor4 = null;
+      this.IRsensor5 = null;
+      this.rangeSensor = null;
     }
     else {
       if (initObj.hasOwnProperty('header')) {
@@ -105,6 +111,42 @@ class balboaLL {
       else {
         this.distanceRight = 0;
       }
+      if (initObj.hasOwnProperty('IRsensor1')) {
+        this.IRsensor1 = initObj.IRsensor1
+      }
+      else {
+        this.IRsensor1 = 0;
+      }
+      if (initObj.hasOwnProperty('IRsensor2')) {
+        this.IRsensor2 = initObj.IRsensor2
+      }
+      else {
+        this.IRsensor2 = 0;
+      }
+      if (initObj.hasOwnProperty('IRsensor3')) {
+        this.IRsensor3 = initObj.IRsensor3
+      }
+      else {
+        this.IRsensor3 = 0;
+      }
+      if (initObj.hasOwnProperty('IRsensor4')) {
+        this.IRsensor4 = initObj.IRsensor4
+      }
+      else {
+        this.IRsensor4 = 0;
+      }
+      if (initObj.hasOwnProperty('IRsensor5')) {
+        this.IRsensor5 = initObj.IRsensor5
+      }
+      else {
+        this.IRsensor5 = 0;
+      }
+      if (initObj.hasOwnProperty('rangeSensor')) {
+        this.rangeSensor = initObj.rangeSensor
+      }
+      else {
+        this.rangeSensor = 0;
+      }
     }
   }
 
@@ -134,6 +176,18 @@ class balboaLL {
     bufferOffset = _serializer.int32(obj.distanceLeft, buffer, bufferOffset);
     // Serialize message field [distanceRight]
     bufferOffset = _serializer.int32(obj.distanceRight, buffer, bufferOffset);
+    // Serialize message field [IRsensor1]
+    bufferOffset = _serializer.int32(obj.IRsensor1, buffer, bufferOffset);
+    // Serialize message field [IRsensor2]
+    bufferOffset = _serializer.int32(obj.IRsensor2, buffer, bufferOffset);
+    // Serialize message field [IRsensor3]
+    bufferOffset = _serializer.int32(obj.IRsensor3, buffer, bufferOffset);
+    // Serialize message field [IRsensor4]
+    bufferOffset = _serializer.int32(obj.IRsensor4, buffer, bufferOffset);
+    // Serialize message field [IRsensor5]
+    bufferOffset = _serializer.int32(obj.IRsensor5, buffer, bufferOffset);
+    // Serialize message field [rangeSensor]
+    bufferOffset = _serializer.int32(obj.rangeSensor, buffer, bufferOffset);
     return bufferOffset;
   }
 
@@ -165,13 +219,25 @@ class balboaLL {
     data.distanceLeft = _deserializer.int32(buffer, bufferOffset);
     // Deserialize message field [distanceRight]
     data.distanceRight = _deserializer.int32(buffer, bufferOffset);
+    // Deserialize message field [IRsensor1]
+    data.IRsensor1 = _deserializer.int32(buffer, bufferOffset);
+    // Deserialize message field [IRsensor2]
+    data.IRsensor2 = _deserializer.int32(buffer, bufferOffset);
+    // Deserialize message field [IRsensor3]
+    data.IRsensor3 = _deserializer.int32(buffer, bufferOffset);
+    // Deserialize message field [IRsensor4]
+    data.IRsensor4 = _deserializer.int32(buffer, bufferOffset);
+    // Deserialize message field [IRsensor5]
+    data.IRsensor5 = _deserializer.int32(buffer, bufferOffset);
+    // Deserialize message field [rangeSensor]
+    data.rangeSensor = _deserializer.int32(buffer, bufferOffset);
     return data;
   }
 
   static getMessageSize(object) {
     let length = 0;
     length += std_msgs.msg.Header.getMessageSize(object.header);
-    return length + 44;
+    return length + 68;
   }
 
   static datatype() {
@@ -181,7 +247,7 @@ class balboaLL {
 
   static md5sum() {
     //Returns md5sum for a message object
-    return '0a0a3ddad915416071f2d2213a371653';
+    return '36b86d230f7daf8cf20eff01d9c0432f';
   }
 
   static messageDefinition() {
@@ -200,7 +266,12 @@ class balboaLL {
     int32 speedRight
     int32 distanceLeft
     int32 distanceRight
-    
+    int32 IRsensor1 ## Added by group ##
+    int32 IRsensor2 ## Added by group ##
+    int32 IRsensor3 ## Added by group ##
+    int32 IRsensor4 ## Added by group ##
+    int32 IRsensor5 ## Added by group ##
+    int32 rangeSensor ## Added by group ##
     
     ================================================================================
     MSG: std_msgs/Header
@@ -309,6 +380,48 @@ class balboaLL {
     }
     else {
       resolved.distanceRight = 0
+    }
+
+    if (msg.IRsensor1 !== undefined) {
+      resolved.IRsensor1 = msg.IRsensor1;
+    }
+    else {
+      resolved.IRsensor1 = 0
+    }
+
+    if (msg.IRsensor2 !== undefined) {
+      resolved.IRsensor2 = msg.IRsensor2;
+    }
+    else {
+      resolved.IRsensor2 = 0
+    }
+
+    if (msg.IRsensor3 !== undefined) {
+      resolved.IRsensor3 = msg.IRsensor3;
+    }
+    else {
+      resolved.IRsensor3 = 0
+    }
+
+    if (msg.IRsensor4 !== undefined) {
+      resolved.IRsensor4 = msg.IRsensor4;
+    }
+    else {
+      resolved.IRsensor4 = 0
+    }
+
+    if (msg.IRsensor5 !== undefined) {
+      resolved.IRsensor5 = msg.IRsensor5;
+    }
+    else {
+      resolved.IRsensor5 = 0
+    }
+
+    if (msg.rangeSensor !== undefined) {
+      resolved.rangeSensor = msg.rangeSensor;
+    }
+    else {
+      resolved.rangeSensor = 0
     }
 
     return resolved;

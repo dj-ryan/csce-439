@@ -23,4 +23,16 @@
           DISTANCELEFT
           DISTANCERIGHT-VAL
           DISTANCERIGHT
+          IRSENSOR1-VAL
+          IRSENSOR1
+          IRSENSOR2-VAL
+          IRSENSOR2
+          IRSENSOR3-VAL
+          IRSENSOR3
+          IRSENSOR4-VAL
+          IRSENSOR4
+          IRSENSOR5-VAL
+          IRSENSOR5
+          RANGESENSOR-VAL
+          RANGESENSOR
 ))

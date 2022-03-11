@@ -16,7 +16,7 @@
 
 (defclass balboa_core::balboaLL
   :super ros::object
-  :slots (_header _arduinoMillis _batteryMillivolts _angleY _angleX _angleZ _driveLeft _driveRight _speedLeft _speedRight _distanceLeft _distanceRight ))
+  :slots (_header _arduinoMillis _batteryMillivolts _angleY _angleX _angleZ _driveLeft _driveRight _speedLeft _speedRight _distanceLeft _distanceRight _IRsensor1 _IRsensor2 _IRsensor3 _IRsensor4 _IRsensor5 _rangeSensor ))
 
 (defmethod balboa_core::balboaLL
   (:init
@@ -33,6 +33,12 @@
     ((:speedRight __speedRight) 0)
     ((:distanceLeft __distanceLeft) 0)
     ((:distanceRight __distanceRight) 0)
+    ((:IRsensor1 __IRsensor1) 0)
+    ((:IRsensor2 __IRsensor2) 0)
+    ((:IRsensor3 __IRsensor3) 0)
+    ((:IRsensor4 __IRsensor4) 0)
+    ((:IRsensor5 __IRsensor5) 0)
+    ((:rangeSensor __rangeSensor) 0)
     )
    (send-super :init)
    (setq _header __header)
@@ -47,6 +53,12 @@
    (setq _speedRight (round __speedRight))
    (setq _distanceLeft (round __distanceLeft))
    (setq _distanceRight (round __distanceRight))
+   (setq _IRsensor1 (round __IRsensor1))
+   (setq _IRsensor2 (round __IRsensor2))
+   (setq _IRsensor3 (round __IRsensor3))
+   (setq _IRsensor4 (round __IRsensor4))
+   (setq _IRsensor5 (round __IRsensor5))
+   (setq _rangeSensor (round __rangeSensor))
    self)
   (:header
    (&rest __header)
@@ -88,6 +100,24 @@
   (:distanceRight
    (&optional __distanceRight)
    (if __distanceRight (setq _distanceRight __distanceRight)) _distanceRight)
+  (:IRsensor1
+   (&optional __IRsensor1)
+   (if __IRsensor1 (setq _IRsensor1 __IRsensor1)) _IRsensor1)
+  (:IRsensor2
+   (&optional __IRsensor2)
+   (if __IRsensor2 (setq _IRsensor2 __IRsensor2)) _IRsensor2)
+  (:IRsensor3
+   (&optional __IRsensor3)
+   (if __IRsensor3 (setq _IRsensor3 __IRsensor3)) _IRsensor3)
+  (:IRsensor4
+   (&optional __IRsensor4)
+   (if __IRsensor4 (setq _IRsensor4 __IRsensor4)) _IRsensor4)
+  (:IRsensor5
+   (&optional __IRsensor5)
+   (if __IRsensor5 (setq _IRsensor5 __IRsensor5)) _IRsensor5)
+  (:rangeSensor
+   (&optional __rangeSensor)
+   (if __rangeSensor (setq _rangeSensor __rangeSensor)) _rangeSensor)
   (:serialization-length
    ()
    (+
@@ -114,6 +144,18 @@
     ;; int32 _distanceLeft
     4
     ;; int32 _distanceRight
+    4
+    ;; int32 _IRsensor1
+    4
+    ;; int32 _IRsensor2
+    4
+    ;; int32 _IRsensor3
+    4
+    ;; int32 _IRsensor4
+    4
+    ;; int32 _IRsensor5
+    4
+    ;; int32 _rangeSensor
     4
     ))
   (:serialize
@@ -144,6 +186,18 @@
        (write-long _distanceLeft s)
      ;; int32 _distanceRight
        (write-long _distanceRight s)
+     ;; int32 _IRsensor1
+       (write-long _IRsensor1 s)
+     ;; int32 _IRsensor2
+       (write-long _IRsensor2 s)
+     ;; int32 _IRsensor3
+       (write-long _IRsensor3 s)
+     ;; int32 _IRsensor4
+       (write-long _IRsensor4 s)
+     ;; int32 _IRsensor5
+       (write-long _IRsensor5 s)
+     ;; int32 _rangeSensor
+       (write-long _rangeSensor s)
      ;;
      (if (null strm) (get-output-stream-string s))))
   (:deserialize
@@ -172,11 +226,23 @@
      (setq _distanceLeft (sys::peek buf ptr- :integer)) (incf ptr- 4)
    ;; int32 _distanceRight
      (setq _distanceRight (sys::peek buf ptr- :integer)) (incf ptr- 4)
+   ;; int32 _IRsensor1
+     (setq _IRsensor1 (sys::peek buf ptr- :integer)) (incf ptr- 4)
+   ;; int32 _IRsensor2
+     (setq _IRsensor2 (sys::peek buf ptr- :integer)) (incf ptr- 4)
+   ;; int32 _IRsensor3
+     (setq _IRsensor3 (sys::peek buf ptr- :integer)) (incf ptr- 4)
+   ;; int32 _IRsensor4
+     (setq _IRsensor4 (sys::peek buf ptr- :integer)) (incf ptr- 4)
+   ;; int32 _IRsensor5
+     (setq _IRsensor5 (sys::peek buf ptr- :integer)) (incf ptr- 4)
+   ;; int32 _rangeSensor
+     (setq _rangeSensor (sys::peek buf ptr- :integer)) (incf ptr- 4)
    ;;
    self)
   )
 
-(setf (get balboa_core::balboaLL :md5sum-) "0a0a3ddad915416071f2d2213a371653")
+(setf (get balboa_core::balboaLL :md5sum-) "36b86d230f7daf8cf20eff01d9c0432f")
 (setf (get balboa_core::balboaLL :datatype-) "balboa_core/balboaLL")
 (setf (get balboa_core::balboaLL :definition-)
       "Header header
@@ -192,7 +258,12 @@ int32 speedLeft
 int32 speedRight
 int32 distanceLeft
 int32 distanceRight
-
+int32 IRsensor1 ## Added by group ##
+int32 IRsensor2 ## Added by group ##
+int32 IRsensor3 ## Added by group ##
+int32 IRsensor4 ## Added by group ##
+int32 IRsensor5 ## Added by group ##
+int32 rangeSensor ## Added by group ##
 
 ================================================================================
 MSG: std_msgs/Header
@@ -214,6 +285,6 @@ string frame_id
 
 
 
-(provide :balboa_core/balboaLL "0a0a3ddad915416071f2d2213a371653")
+(provide :balboa_core/balboaLL "36b86d230f7daf8cf20eff01d9c0432f")
 
 
