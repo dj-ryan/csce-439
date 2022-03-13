@@ -91,16 +91,6 @@ rebuild_cache/fast: rebuild_cache
 
 .PHONY : rebuild_cache/fast
 
-# Special rule for the target list_install_components
-list_install_components:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
-.PHONY : list_install_components
-
-# Special rule for the target list_install_components
-list_install_components/fast: list_install_components
-
-.PHONY : list_install_components/fast
-
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
@@ -111,6 +101,16 @@ edit_cache:
 edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
+
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
+.PHONY : list_install_components
+
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
+
+.PHONY : list_install_components/fast
 
 # Special rule for the target install
 install: preinstall
@@ -226,6 +226,21 @@ _hw2stats_generate_messages_check_deps_gameStatsMsg: hw2stats/CMakeFiles/_hw2sta
 _hw2stats_generate_messages_check_deps_gameStatsMsg/fast:
 	cd /home/shared/catkin_ws/build && $(MAKE) -f hw2stats/CMakeFiles/_hw2stats_generate_messages_check_deps_gameStatsMsg.dir/build.make hw2stats/CMakeFiles/_hw2stats_generate_messages_check_deps_gameStatsMsg.dir/build
 .PHONY : _hw2stats_generate_messages_check_deps_gameStatsMsg/fast
+
+# Convenience name for target.
+hw2stats/CMakeFiles/kalmanFilter.dir/rule:
+	cd /home/shared/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 hw2stats/CMakeFiles/kalmanFilter.dir/rule
+.PHONY : hw2stats/CMakeFiles/kalmanFilter.dir/rule
+
+# Convenience name for target.
+kalmanFilter: hw2stats/CMakeFiles/kalmanFilter.dir/rule
+
+.PHONY : kalmanFilter
+
+# fast build rule for target.
+kalmanFilter/fast:
+	cd /home/shared/catkin_ws/build && $(MAKE) -f hw2stats/CMakeFiles/kalmanFilter.dir/build.make hw2stats/CMakeFiles/kalmanFilter.dir/build
+.PHONY : kalmanFilter/fast
 
 # Convenience name for target.
 hw2stats/CMakeFiles/hw2stats_generate_messages_eus.dir/rule:
@@ -377,6 +392,33 @@ hw2stats_geneus/fast:
 	cd /home/shared/catkin_ws/build && $(MAKE) -f hw2stats/CMakeFiles/hw2stats_geneus.dir/build.make hw2stats/CMakeFiles/hw2stats_geneus.dir/build
 .PHONY : hw2stats_geneus/fast
 
+src/kalmanFilter.o: src/kalmanFilter.cpp.o
+
+.PHONY : src/kalmanFilter.o
+
+# target to build an object file
+src/kalmanFilter.cpp.o:
+	cd /home/shared/catkin_ws/build && $(MAKE) -f hw2stats/CMakeFiles/kalmanFilter.dir/build.make hw2stats/CMakeFiles/kalmanFilter.dir/src/kalmanFilter.cpp.o
+.PHONY : src/kalmanFilter.cpp.o
+
+src/kalmanFilter.i: src/kalmanFilter.cpp.i
+
+.PHONY : src/kalmanFilter.i
+
+# target to preprocess a source file
+src/kalmanFilter.cpp.i:
+	cd /home/shared/catkin_ws/build && $(MAKE) -f hw2stats/CMakeFiles/kalmanFilter.dir/build.make hw2stats/CMakeFiles/kalmanFilter.dir/src/kalmanFilter.cpp.i
+.PHONY : src/kalmanFilter.cpp.i
+
+src/kalmanFilter.s: src/kalmanFilter.cpp.s
+
+.PHONY : src/kalmanFilter.s
+
+# target to generate assembly for a file
+src/kalmanFilter.cpp.s:
+	cd /home/shared/catkin_ws/build && $(MAKE) -f hw2stats/CMakeFiles/kalmanFilter.dir/build.make hw2stats/CMakeFiles/kalmanFilter.dir/src/kalmanFilter.cpp.s
+.PHONY : src/kalmanFilter.cpp.s
+
 src/offensiveStats.o: src/offensiveStats.cpp.o
 
 .PHONY : src/offensiveStats.o
@@ -413,14 +455,15 @@ help:
 	@echo "... install/strip"
 	@echo "... install/local"
 	@echo "... rebuild_cache"
+	@echo "... edit_cache"
 	@echo "... hw2stats_gencpp"
 	@echo "... hw2stats_generate_messages_cpp"
 	@echo "... list_install_components"
 	@echo "... hw2stats_generate_messages"
 	@echo "... _hw2stats_generate_messages_check_deps_gameStatsMsg"
+	@echo "... kalmanFilter"
 	@echo "... hw2stats_generate_messages_eus"
 	@echo "... _hw2stats_generate_messages_check_deps_offensivePlay"
-	@echo "... edit_cache"
 	@echo "... install"
 	@echo "... hw2stats_generate_messages_lisp"
 	@echo "... hw2stats_generate_messages_py"
@@ -431,6 +474,9 @@ help:
 	@echo "... offensiveStats"
 	@echo "... hw2stats_geneus"
 	@echo "... test"
+	@echo "... src/kalmanFilter.o"
+	@echo "... src/kalmanFilter.i"
+	@echo "... src/kalmanFilter.s"
 	@echo "... src/offensiveStats.o"
 	@echo "... src/offensiveStats.i"
 	@echo "... src/offensiveStats.s"

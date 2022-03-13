@@ -117,7 +117,7 @@ catkin_package(
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
 include_directories(
-# include
+  # include
   ${catkin_INCLUDE_DIRS}
 )
 
@@ -214,3 +214,7 @@ include_directories(
 add_executable(offensiveStats src/offensiveStats.cpp)
 target_link_libraries(offensiveStats ${catkin_LIBRARIES})
 add_dependencies(offensiveStats ${catkin_EXPORTED_TARGETS})
+
+add_executable(kalmanFilter src/kalmanFilter.cpp)
+target_link_libraries(kalmanFilter ${catkin_LIBRARIES})
+add_dependencies(kalmanFilter ${catkin_EXPORTED_TARGETS})

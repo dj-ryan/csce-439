@@ -19,15 +19,15 @@ class RocketShip(object):
             self.control_accel.data += self.control_accel_delta
 
         # Update the true velocity based on controlled accel plus noise
-        self.true_accel = self.control_accel.data + gauss(0,0.01)
+        self.true_accel = self.control_accel.data #+ gauss(0,0.01)
         self.true_vel.data += self.true_accel*0.1 #10Hz rate
         # Update the true altitude
         self.true_altitude.data += self.true_vel.data*0.1
 
         # Now update the sensed accel, which will have more noise
-        self.sensed_accel = self.true_accel + gauss(0,0.01)
+        self.sensed_accel = self.true_accel #+ gauss(0,0.01)
         # Sensed velocity with more noise
-        self.sensed_vel = self.true_vel.data + gauss(0,1)
+        self.sensed_vel = self.true_vel.data #+ gauss(0,1)
 
 
     def __init__(self):

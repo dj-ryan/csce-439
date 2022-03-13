@@ -108,6 +108,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     firefox \
     gnome-terminal \
     xterm \
+    libeigen3-dev \
     && rm -rf /var/lib/apt/lists/*
 
 

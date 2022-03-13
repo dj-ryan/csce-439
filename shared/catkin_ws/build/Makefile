@@ -935,6 +935,19 @@ _hw2stats_generate_messages_check_deps_gameStatsMsg/fast:
 .PHONY : _hw2stats_generate_messages_check_deps_gameStatsMsg/fast
 
 #=============================================================================
+# Target rules for targets named kalmanFilter
+
+# Build rule for target.
+kalmanFilter: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 kalmanFilter
+.PHONY : kalmanFilter
+
+# fast build rule for target.
+kalmanFilter/fast:
+	$(MAKE) -f hw2stats/CMakeFiles/kalmanFilter.dir/build.make hw2stats/CMakeFiles/kalmanFilter.dir/build
+.PHONY : kalmanFilter/fast
+
+#=============================================================================
 # Target rules for targets named hw2stats_generate_messages_eus
 
 # Build rule for target.
@@ -1136,6 +1149,7 @@ help:
 	@echo "... hw2stats_generate_messages_cpp"
 	@echo "... hw2stats_generate_messages"
 	@echo "... _hw2stats_generate_messages_check_deps_gameStatsMsg"
+	@echo "... kalmanFilter"
 	@echo "... hw2stats_generate_messages_eus"
 	@echo "... _hw2stats_generate_messages_check_deps_offensivePlay"
 	@echo "... hw2stats_generate_messages_lisp"
