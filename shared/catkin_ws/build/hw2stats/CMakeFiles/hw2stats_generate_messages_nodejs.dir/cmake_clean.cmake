@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/hw2stats_generate_messages_nodejs"
+  "/home/shared/catkin_ws/devel/share/gennodejs/ros/hw2stats/msg/rocketState.js"
   "/home/shared/catkin_ws/devel/share/gennodejs/ros/hw2stats/msg/offensivePlay.js"
   "/home/shared/catkin_ws/devel/share/gennodejs/ros/hw2stats/msg/gameStatsMsg.js"
 )

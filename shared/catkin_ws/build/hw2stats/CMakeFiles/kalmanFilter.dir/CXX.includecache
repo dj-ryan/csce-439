@@ -6,6 +6,24 @@
 
 #IncludeRegexTransform: 
 
+/home/shared/catkin_ws/devel/include/hw2stats/rocketState.h
+string
+-
+vector
+-
+map
+-
+ros/types.h
+-
+ros/serialization.h
+-
+ros/builtin_message_traits.h
+-
+ros/message_operations.h
+-
+std_msgs/Header.h
+-
+
 /home/shared/catkin_ws/src/hw2stats/src/kalmanFilter.cpp
 ros/ros.h
 /home/shared/catkin_ws/src/hw2stats/src/ros/ros.h
@@ -19,6 +37,8 @@ stdlib.h
 -
 Eigen/Dense
 -
+hw2stats/rocketState.h
+/home/shared/catkin_ws/src/hw2stats/src/hw2stats/rocketState.h
 
 /opt/ros/melodic/include/ros/advertise_options.h
 ros/forwards.h
@@ -667,6 +687,22 @@ ros/forwards.h
 /opt/ros/melodic/include/rosconsole/macros_generated.h
 
 /opt/ros/melodic/include/std_msgs/Float64.h
+string
+-
+vector
+-
+map
+-
+ros/types.h
+-
+ros/serialization.h
+-
+ros/builtin_message_traits.h
+-
+ros/message_operations.h
+-
+
+/opt/ros/melodic/include/std_msgs/Header.h
 string
 -
 vector

@@ -9,4 +9,6 @@
     (:file "_package_gameStatsMsg" :depends-on ("_package"))
     (:file "offensivePlay" :depends-on ("_package_offensivePlay"))
     (:file "_package_offensivePlay" :depends-on ("_package"))
+    (:file "rocketState" :depends-on ("_package_rocketState"))
+    (:file "_package_rocketState" :depends-on ("_package"))
   ))

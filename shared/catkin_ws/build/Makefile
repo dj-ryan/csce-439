@@ -883,19 +883,6 @@ balboa_core_generate_messages_eus/fast:
 .PHONY : balboa_core_generate_messages_eus/fast
 
 #=============================================================================
-# Target rules for targets named hw2stats_gencpp
-
-# Build rule for target.
-hw2stats_gencpp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 hw2stats_gencpp
-.PHONY : hw2stats_gencpp
-
-# fast build rule for target.
-hw2stats_gencpp/fast:
-	$(MAKE) -f hw2stats/CMakeFiles/hw2stats_gencpp.dir/build.make hw2stats/CMakeFiles/hw2stats_gencpp.dir/build
-.PHONY : hw2stats_gencpp/fast
-
-#=============================================================================
 # Target rules for targets named hw2stats_generate_messages_cpp
 
 # Build rule for target.
@@ -920,6 +907,32 @@ hw2stats_generate_messages: cmake_check_build_system
 hw2stats_generate_messages/fast:
 	$(MAKE) -f hw2stats/CMakeFiles/hw2stats_generate_messages.dir/build.make hw2stats/CMakeFiles/hw2stats_generate_messages.dir/build
 .PHONY : hw2stats_generate_messages/fast
+
+#=============================================================================
+# Target rules for targets named hw2stats_gencpp
+
+# Build rule for target.
+hw2stats_gencpp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 hw2stats_gencpp
+.PHONY : hw2stats_gencpp
+
+# fast build rule for target.
+hw2stats_gencpp/fast:
+	$(MAKE) -f hw2stats/CMakeFiles/hw2stats_gencpp.dir/build.make hw2stats/CMakeFiles/hw2stats_gencpp.dir/build
+.PHONY : hw2stats_gencpp/fast
+
+#=============================================================================
+# Target rules for targets named _hw2stats_generate_messages_check_deps_offensivePlay
+
+# Build rule for target.
+_hw2stats_generate_messages_check_deps_offensivePlay: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 _hw2stats_generate_messages_check_deps_offensivePlay
+.PHONY : _hw2stats_generate_messages_check_deps_offensivePlay
+
+# fast build rule for target.
+_hw2stats_generate_messages_check_deps_offensivePlay/fast:
+	$(MAKE) -f hw2stats/CMakeFiles/_hw2stats_generate_messages_check_deps_offensivePlay.dir/build.make hw2stats/CMakeFiles/_hw2stats_generate_messages_check_deps_offensivePlay.dir/build
+.PHONY : _hw2stats_generate_messages_check_deps_offensivePlay/fast
 
 #=============================================================================
 # Target rules for targets named _hw2stats_generate_messages_check_deps_gameStatsMsg
@@ -948,6 +961,19 @@ kalmanFilter/fast:
 .PHONY : kalmanFilter/fast
 
 #=============================================================================
+# Target rules for targets named _hw2stats_generate_messages_check_deps_rocketState
+
+# Build rule for target.
+_hw2stats_generate_messages_check_deps_rocketState: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 _hw2stats_generate_messages_check_deps_rocketState
+.PHONY : _hw2stats_generate_messages_check_deps_rocketState
+
+# fast build rule for target.
+_hw2stats_generate_messages_check_deps_rocketState/fast:
+	$(MAKE) -f hw2stats/CMakeFiles/_hw2stats_generate_messages_check_deps_rocketState.dir/build.make hw2stats/CMakeFiles/_hw2stats_generate_messages_check_deps_rocketState.dir/build
+.PHONY : _hw2stats_generate_messages_check_deps_rocketState/fast
+
+#=============================================================================
 # Target rules for targets named hw2stats_generate_messages_eus
 
 # Build rule for target.
@@ -961,17 +987,17 @@ hw2stats_generate_messages_eus/fast:
 .PHONY : hw2stats_generate_messages_eus/fast
 
 #=============================================================================
-# Target rules for targets named _hw2stats_generate_messages_check_deps_offensivePlay
+# Target rules for targets named hw2stats_geneus
 
 # Build rule for target.
-_hw2stats_generate_messages_check_deps_offensivePlay: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 _hw2stats_generate_messages_check_deps_offensivePlay
-.PHONY : _hw2stats_generate_messages_check_deps_offensivePlay
+hw2stats_geneus: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 hw2stats_geneus
+.PHONY : hw2stats_geneus
 
 # fast build rule for target.
-_hw2stats_generate_messages_check_deps_offensivePlay/fast:
-	$(MAKE) -f hw2stats/CMakeFiles/_hw2stats_generate_messages_check_deps_offensivePlay.dir/build.make hw2stats/CMakeFiles/_hw2stats_generate_messages_check_deps_offensivePlay.dir/build
-.PHONY : _hw2stats_generate_messages_check_deps_offensivePlay/fast
+hw2stats_geneus/fast:
+	$(MAKE) -f hw2stats/CMakeFiles/hw2stats_geneus.dir/build.make hw2stats/CMakeFiles/hw2stats_geneus.dir/build
+.PHONY : hw2stats_geneus/fast
 
 #=============================================================================
 # Target rules for targets named hw2stats_generate_messages_lisp
@@ -1064,19 +1090,6 @@ offensiveStats/fast:
 	$(MAKE) -f hw2stats/CMakeFiles/offensiveStats.dir/build.make hw2stats/CMakeFiles/offensiveStats.dir/build
 .PHONY : offensiveStats/fast
 
-#=============================================================================
-# Target rules for targets named hw2stats_geneus
-
-# Build rule for target.
-hw2stats_geneus: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 hw2stats_geneus
-.PHONY : hw2stats_geneus
-
-# fast build rule for target.
-hw2stats_geneus/fast:
-	$(MAKE) -f hw2stats/CMakeFiles/hw2stats_geneus.dir/build.make hw2stats/CMakeFiles/hw2stats_geneus.dir/build
-.PHONY : hw2stats_geneus/fast
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -1145,13 +1158,15 @@ help:
 	@echo "... balboa_core_generate_messages_py"
 	@echo "... balboa_core_genpy"
 	@echo "... balboa_core_generate_messages_eus"
-	@echo "... hw2stats_gencpp"
 	@echo "... hw2stats_generate_messages_cpp"
 	@echo "... hw2stats_generate_messages"
+	@echo "... hw2stats_gencpp"
+	@echo "... _hw2stats_generate_messages_check_deps_offensivePlay"
 	@echo "... _hw2stats_generate_messages_check_deps_gameStatsMsg"
 	@echo "... kalmanFilter"
+	@echo "... _hw2stats_generate_messages_check_deps_rocketState"
 	@echo "... hw2stats_generate_messages_eus"
-	@echo "... _hw2stats_generate_messages_check_deps_offensivePlay"
+	@echo "... hw2stats_geneus"
 	@echo "... hw2stats_generate_messages_lisp"
 	@echo "... hw2stats_generate_messages_py"
 	@echo "... hw2stats_generate_messages_nodejs"
@@ -1159,7 +1174,6 @@ help:
 	@echo "... hw2stats_gennodejs"
 	@echo "... hw2stats_genpy"
 	@echo "... offensiveStats"
-	@echo "... hw2stats_geneus"
 .PHONY : help
 
 

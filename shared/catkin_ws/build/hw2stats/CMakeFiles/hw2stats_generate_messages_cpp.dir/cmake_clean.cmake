@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/hw2stats_generate_messages_cpp"
+  "/home/shared/catkin_ws/devel/include/hw2stats/rocketState.h"
   "/home/shared/catkin_ws/devel/include/hw2stats/offensivePlay.h"
   "/home/shared/catkin_ws/devel/include/hw2stats/gameStatsMsg.h"
 )

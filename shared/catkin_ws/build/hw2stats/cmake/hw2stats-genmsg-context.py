@@ -1,6 +1,6 @@
 # generated from genmsg/cmake/pkg-genmsg.context.in
 
-messages_str = "/home/shared/catkin_ws/src/hw2stats/msg/offensivePlay.msg;/home/shared/catkin_ws/src/hw2stats/msg/gameStatsMsg.msg"
+messages_str = "/home/shared/catkin_ws/src/hw2stats/msg/offensivePlay.msg;/home/shared/catkin_ws/src/hw2stats/msg/gameStatsMsg.msg;/home/shared/catkin_ws/src/hw2stats/msg/rocketState.msg"
 services_str = ""
 pkg_name = "hw2stats"
 dependencies_str = "std_msgs"

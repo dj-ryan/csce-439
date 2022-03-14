@@ -1,6 +1,6 @@
 # generated from genmsg/cmake/pkg-genmsg.cmake.em
 
-message(STATUS "hw2stats: 2 messages, 0 services")
+message(STATUS "hw2stats: 3 messages, 0 services")
 
 set(MSG_I_FLAGS "-Ihw2stats:/home/shared/catkin_ws/src/hw2stats/msg;-Istd_msgs:/opt/ros/melodic/share/std_msgs/cmake/../msg")
 
@@ -17,14 +17,19 @@ add_custom_target(hw2stats_generate_messages ALL)
 
 
 
+get_filename_component(_filename "/home/shared/catkin_ws/src/hw2stats/msg/gameStatsMsg.msg" NAME_WE)
+add_custom_target(_hw2stats_generate_messages_check_deps_${_filename}
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "hw2stats" "/home/shared/catkin_ws/src/hw2stats/msg/gameStatsMsg.msg" "std_msgs/Header"
+)
+
 get_filename_component(_filename "/home/shared/catkin_ws/src/hw2stats/msg/offensivePlay.msg" NAME_WE)
 add_custom_target(_hw2stats_generate_messages_check_deps_${_filename}
   COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "hw2stats" "/home/shared/catkin_ws/src/hw2stats/msg/offensivePlay.msg" "std_msgs/Header"
 )
 
-get_filename_component(_filename "/home/shared/catkin_ws/src/hw2stats/msg/gameStatsMsg.msg" NAME_WE)
+get_filename_component(_filename "/home/shared/catkin_ws/src/hw2stats/msg/rocketState.msg" NAME_WE)
 add_custom_target(_hw2stats_generate_messages_check_deps_${_filename}
-  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "hw2stats" "/home/shared/catkin_ws/src/hw2stats/msg/gameStatsMsg.msg" "std_msgs/Header"
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "hw2stats" "/home/shared/catkin_ws/src/hw2stats/msg/rocketState.msg" "std_msgs/Header"
 )
 
 #
@@ -33,6 +38,12 @@ add_custom_target(_hw2stats_generate_messages_check_deps_${_filename}
 
 ### Section generating for lang: gencpp
 ### Generating Messages
+_generate_msg_cpp(hw2stats
+  "/home/shared/catkin_ws/src/hw2stats/msg/rocketState.msg"
+  "${MSG_I_FLAGS}"
+  "/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg"
+  ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/hw2stats
+)
 _generate_msg_cpp(hw2stats
   "/home/shared/catkin_ws/src/hw2stats/msg/offensivePlay.msg"
   "${MSG_I_FLAGS}"
@@ -60,9 +71,11 @@ add_custom_target(hw2stats_generate_messages_cpp
 add_dependencies(hw2stats_generate_messages hw2stats_generate_messages_cpp)
 
 # add dependencies to all check dependencies targets
+get_filename_component(_filename "/home/shared/catkin_ws/src/hw2stats/msg/gameStatsMsg.msg" NAME_WE)
+add_dependencies(hw2stats_generate_messages_cpp _hw2stats_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/shared/catkin_ws/src/hw2stats/msg/offensivePlay.msg" NAME_WE)
 add_dependencies(hw2stats_generate_messages_cpp _hw2stats_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/shared/catkin_ws/src/hw2stats/msg/gameStatsMsg.msg" NAME_WE)
+get_filename_component(_filename "/home/shared/catkin_ws/src/hw2stats/msg/rocketState.msg" NAME_WE)
 add_dependencies(hw2stats_generate_messages_cpp _hw2stats_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
@@ -74,6 +87,12 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS hw2stats_generate_messages_cpp)
 
 ### Section generating for lang: geneus
 ### Generating Messages
+_generate_msg_eus(hw2stats
+  "/home/shared/catkin_ws/src/hw2stats/msg/rocketState.msg"
+  "${MSG_I_FLAGS}"
+  "/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg"
+  ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/hw2stats
+)
 _generate_msg_eus(hw2stats
   "/home/shared/catkin_ws/src/hw2stats/msg/offensivePlay.msg"
   "${MSG_I_FLAGS}"
@@ -101,9 +120,11 @@ add_custom_target(hw2stats_generate_messages_eus
 add_dependencies(hw2stats_generate_messages hw2stats_generate_messages_eus)
 
 # add dependencies to all check dependencies targets
+get_filename_component(_filename "/home/shared/catkin_ws/src/hw2stats/msg/gameStatsMsg.msg" NAME_WE)
+add_dependencies(hw2stats_generate_messages_eus _hw2stats_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/shared/catkin_ws/src/hw2stats/msg/offensivePlay.msg" NAME_WE)
 add_dependencies(hw2stats_generate_messages_eus _hw2stats_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/shared/catkin_ws/src/hw2stats/msg/gameStatsMsg.msg" NAME_WE)
+get_filename_component(_filename "/home/shared/catkin_ws/src/hw2stats/msg/rocketState.msg" NAME_WE)
 add_dependencies(hw2stats_generate_messages_eus _hw2stats_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
@@ -115,6 +136,12 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS hw2stats_generate_messages_eus)
 
 ### Section generating for lang: genlisp
 ### Generating Messages
+_generate_msg_lisp(hw2stats
+  "/home/shared/catkin_ws/src/hw2stats/msg/rocketState.msg"
+  "${MSG_I_FLAGS}"
+  "/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg"
+  ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/hw2stats
+)
 _generate_msg_lisp(hw2stats
   "/home/shared/catkin_ws/src/hw2stats/msg/offensivePlay.msg"
   "${MSG_I_FLAGS}"
@@ -142,9 +169,11 @@ add_custom_target(hw2stats_generate_messages_lisp
 add_dependencies(hw2stats_generate_messages hw2stats_generate_messages_lisp)
 
 # add dependencies to all check dependencies targets
+get_filename_component(_filename "/home/shared/catkin_ws/src/hw2stats/msg/gameStatsMsg.msg" NAME_WE)
+add_dependencies(hw2stats_generate_messages_lisp _hw2stats_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/shared/catkin_ws/src/hw2stats/msg/offensivePlay.msg" NAME_WE)
 add_dependencies(hw2stats_generate_messages_lisp _hw2stats_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/shared/catkin_ws/src/hw2stats/msg/gameStatsMsg.msg" NAME_WE)
+get_filename_component(_filename "/home/shared/catkin_ws/src/hw2stats/msg/rocketState.msg" NAME_WE)
 add_dependencies(hw2stats_generate_messages_lisp _hw2stats_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
@@ -156,6 +185,12 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS hw2stats_generate_messages_lisp)
 
 ### Section generating for lang: gennodejs
 ### Generating Messages
+_generate_msg_nodejs(hw2stats
+  "/home/shared/catkin_ws/src/hw2stats/msg/rocketState.msg"
+  "${MSG_I_FLAGS}"
+  "/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg"
+  ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/hw2stats
+)
 _generate_msg_nodejs(hw2stats
   "/home/shared/catkin_ws/src/hw2stats/msg/offensivePlay.msg"
   "${MSG_I_FLAGS}"
@@ -183,9 +218,11 @@ add_custom_target(hw2stats_generate_messages_nodejs
 add_dependencies(hw2stats_generate_messages hw2stats_generate_messages_nodejs)
 
 # add dependencies to all check dependencies targets
+get_filename_component(_filename "/home/shared/catkin_ws/src/hw2stats/msg/gameStatsMsg.msg" NAME_WE)
+add_dependencies(hw2stats_generate_messages_nodejs _hw2stats_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/shared/catkin_ws/src/hw2stats/msg/offensivePlay.msg" NAME_WE)
 add_dependencies(hw2stats_generate_messages_nodejs _hw2stats_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/shared/catkin_ws/src/hw2stats/msg/gameStatsMsg.msg" NAME_WE)
+get_filename_component(_filename "/home/shared/catkin_ws/src/hw2stats/msg/rocketState.msg" NAME_WE)
 add_dependencies(hw2stats_generate_messages_nodejs _hw2stats_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
@@ -197,6 +234,12 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS hw2stats_generate_messages_nodejs)
 
 ### Section generating for lang: genpy
 ### Generating Messages
+_generate_msg_py(hw2stats
+  "/home/shared/catkin_ws/src/hw2stats/msg/rocketState.msg"
+  "${MSG_I_FLAGS}"
+  "/opt/ros/melodic/share/std_msgs/cmake/../msg/Header.msg"
+  ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/hw2stats
+)
 _generate_msg_py(hw2stats
   "/home/shared/catkin_ws/src/hw2stats/msg/offensivePlay.msg"
   "${MSG_I_FLAGS}"
@@ -224,9 +267,11 @@ add_custom_target(hw2stats_generate_messages_py
 add_dependencies(hw2stats_generate_messages hw2stats_generate_messages_py)
 
 # add dependencies to all check dependencies targets
+get_filename_component(_filename "/home/shared/catkin_ws/src/hw2stats/msg/gameStatsMsg.msg" NAME_WE)
+add_dependencies(hw2stats_generate_messages_py _hw2stats_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/shared/catkin_ws/src/hw2stats/msg/offensivePlay.msg" NAME_WE)
 add_dependencies(hw2stats_generate_messages_py _hw2stats_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/shared/catkin_ws/src/hw2stats/msg/gameStatsMsg.msg" NAME_WE)
+get_filename_component(_filename "/home/shared/catkin_ws/src/hw2stats/msg/rocketState.msg" NAME_WE)
 add_dependencies(hw2stats_generate_messages_py _hw2stats_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility

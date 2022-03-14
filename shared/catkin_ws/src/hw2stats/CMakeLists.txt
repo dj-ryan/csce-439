@@ -52,6 +52,7 @@ add_message_files(
   FILES
   offensivePlay.msg
   gameStatsMsg.msg
+  rocketState.msg
 )
 
 ## Generate services in the 'srv' folder

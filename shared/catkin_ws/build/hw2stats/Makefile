@@ -112,6 +112,17 @@ list_install_components/fast: list_install_components
 
 .PHONY : list_install_components/fast
 
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
+	/usr/bin/ctest --force-new-ctest-process $(ARGS)
+.PHONY : test
+
+# Special rule for the target test
+test/fast: test
+
+.PHONY : test/fast
+
 # Special rule for the target install
 install: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
@@ -123,17 +134,6 @@ install/fast: preinstall/fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
 	/usr/bin/cmake -P cmake_install.cmake
 .PHONY : install/fast
-
-# Special rule for the target test
-test:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
-	/usr/bin/ctest --force-new-ctest-process $(ARGS)
-.PHONY : test
-
-# Special rule for the target test
-test/fast: test
-
-.PHONY : test/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -168,21 +168,6 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-hw2stats/CMakeFiles/hw2stats_gencpp.dir/rule:
-	cd /home/shared/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 hw2stats/CMakeFiles/hw2stats_gencpp.dir/rule
-.PHONY : hw2stats/CMakeFiles/hw2stats_gencpp.dir/rule
-
-# Convenience name for target.
-hw2stats_gencpp: hw2stats/CMakeFiles/hw2stats_gencpp.dir/rule
-
-.PHONY : hw2stats_gencpp
-
-# fast build rule for target.
-hw2stats_gencpp/fast:
-	cd /home/shared/catkin_ws/build && $(MAKE) -f hw2stats/CMakeFiles/hw2stats_gencpp.dir/build.make hw2stats/CMakeFiles/hw2stats_gencpp.dir/build
-.PHONY : hw2stats_gencpp/fast
-
-# Convenience name for target.
 hw2stats/CMakeFiles/hw2stats_generate_messages_cpp.dir/rule:
 	cd /home/shared/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 hw2stats/CMakeFiles/hw2stats_generate_messages_cpp.dir/rule
 .PHONY : hw2stats/CMakeFiles/hw2stats_generate_messages_cpp.dir/rule
@@ -211,6 +196,36 @@ hw2stats_generate_messages: hw2stats/CMakeFiles/hw2stats_generate_messages.dir/r
 hw2stats_generate_messages/fast:
 	cd /home/shared/catkin_ws/build && $(MAKE) -f hw2stats/CMakeFiles/hw2stats_generate_messages.dir/build.make hw2stats/CMakeFiles/hw2stats_generate_messages.dir/build
 .PHONY : hw2stats_generate_messages/fast
+
+# Convenience name for target.
+hw2stats/CMakeFiles/hw2stats_gencpp.dir/rule:
+	cd /home/shared/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 hw2stats/CMakeFiles/hw2stats_gencpp.dir/rule
+.PHONY : hw2stats/CMakeFiles/hw2stats_gencpp.dir/rule
+
+# Convenience name for target.
+hw2stats_gencpp: hw2stats/CMakeFiles/hw2stats_gencpp.dir/rule
+
+.PHONY : hw2stats_gencpp
+
+# fast build rule for target.
+hw2stats_gencpp/fast:
+	cd /home/shared/catkin_ws/build && $(MAKE) -f hw2stats/CMakeFiles/hw2stats_gencpp.dir/build.make hw2stats/CMakeFiles/hw2stats_gencpp.dir/build
+.PHONY : hw2stats_gencpp/fast
+
+# Convenience name for target.
+hw2stats/CMakeFiles/_hw2stats_generate_messages_check_deps_offensivePlay.dir/rule:
+	cd /home/shared/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 hw2stats/CMakeFiles/_hw2stats_generate_messages_check_deps_offensivePlay.dir/rule
+.PHONY : hw2stats/CMakeFiles/_hw2stats_generate_messages_check_deps_offensivePlay.dir/rule
+
+# Convenience name for target.
+_hw2stats_generate_messages_check_deps_offensivePlay: hw2stats/CMakeFiles/_hw2stats_generate_messages_check_deps_offensivePlay.dir/rule
+
+.PHONY : _hw2stats_generate_messages_check_deps_offensivePlay
+
+# fast build rule for target.
+_hw2stats_generate_messages_check_deps_offensivePlay/fast:
+	cd /home/shared/catkin_ws/build && $(MAKE) -f hw2stats/CMakeFiles/_hw2stats_generate_messages_check_deps_offensivePlay.dir/build.make hw2stats/CMakeFiles/_hw2stats_generate_messages_check_deps_offensivePlay.dir/build
+.PHONY : _hw2stats_generate_messages_check_deps_offensivePlay/fast
 
 # Convenience name for target.
 hw2stats/CMakeFiles/_hw2stats_generate_messages_check_deps_gameStatsMsg.dir/rule:
@@ -243,6 +258,21 @@ kalmanFilter/fast:
 .PHONY : kalmanFilter/fast
 
 # Convenience name for target.
+hw2stats/CMakeFiles/_hw2stats_generate_messages_check_deps_rocketState.dir/rule:
+	cd /home/shared/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 hw2stats/CMakeFiles/_hw2stats_generate_messages_check_deps_rocketState.dir/rule
+.PHONY : hw2stats/CMakeFiles/_hw2stats_generate_messages_check_deps_rocketState.dir/rule
+
+# Convenience name for target.
+_hw2stats_generate_messages_check_deps_rocketState: hw2stats/CMakeFiles/_hw2stats_generate_messages_check_deps_rocketState.dir/rule
+
+.PHONY : _hw2stats_generate_messages_check_deps_rocketState
+
+# fast build rule for target.
+_hw2stats_generate_messages_check_deps_rocketState/fast:
+	cd /home/shared/catkin_ws/build && $(MAKE) -f hw2stats/CMakeFiles/_hw2stats_generate_messages_check_deps_rocketState.dir/build.make hw2stats/CMakeFiles/_hw2stats_generate_messages_check_deps_rocketState.dir/build
+.PHONY : _hw2stats_generate_messages_check_deps_rocketState/fast
+
+# Convenience name for target.
 hw2stats/CMakeFiles/hw2stats_generate_messages_eus.dir/rule:
 	cd /home/shared/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 hw2stats/CMakeFiles/hw2stats_generate_messages_eus.dir/rule
 .PHONY : hw2stats/CMakeFiles/hw2stats_generate_messages_eus.dir/rule
@@ -258,19 +288,19 @@ hw2stats_generate_messages_eus/fast:
 .PHONY : hw2stats_generate_messages_eus/fast
 
 # Convenience name for target.
-hw2stats/CMakeFiles/_hw2stats_generate_messages_check_deps_offensivePlay.dir/rule:
-	cd /home/shared/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 hw2stats/CMakeFiles/_hw2stats_generate_messages_check_deps_offensivePlay.dir/rule
-.PHONY : hw2stats/CMakeFiles/_hw2stats_generate_messages_check_deps_offensivePlay.dir/rule
+hw2stats/CMakeFiles/hw2stats_geneus.dir/rule:
+	cd /home/shared/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 hw2stats/CMakeFiles/hw2stats_geneus.dir/rule
+.PHONY : hw2stats/CMakeFiles/hw2stats_geneus.dir/rule
 
 # Convenience name for target.
-_hw2stats_generate_messages_check_deps_offensivePlay: hw2stats/CMakeFiles/_hw2stats_generate_messages_check_deps_offensivePlay.dir/rule
+hw2stats_geneus: hw2stats/CMakeFiles/hw2stats_geneus.dir/rule
 
-.PHONY : _hw2stats_generate_messages_check_deps_offensivePlay
+.PHONY : hw2stats_geneus
 
 # fast build rule for target.
-_hw2stats_generate_messages_check_deps_offensivePlay/fast:
-	cd /home/shared/catkin_ws/build && $(MAKE) -f hw2stats/CMakeFiles/_hw2stats_generate_messages_check_deps_offensivePlay.dir/build.make hw2stats/CMakeFiles/_hw2stats_generate_messages_check_deps_offensivePlay.dir/build
-.PHONY : _hw2stats_generate_messages_check_deps_offensivePlay/fast
+hw2stats_geneus/fast:
+	cd /home/shared/catkin_ws/build && $(MAKE) -f hw2stats/CMakeFiles/hw2stats_geneus.dir/build.make hw2stats/CMakeFiles/hw2stats_geneus.dir/build
+.PHONY : hw2stats_geneus/fast
 
 # Convenience name for target.
 hw2stats/CMakeFiles/hw2stats_generate_messages_lisp.dir/rule:
@@ -377,21 +407,6 @@ offensiveStats/fast:
 	cd /home/shared/catkin_ws/build && $(MAKE) -f hw2stats/CMakeFiles/offensiveStats.dir/build.make hw2stats/CMakeFiles/offensiveStats.dir/build
 .PHONY : offensiveStats/fast
 
-# Convenience name for target.
-hw2stats/CMakeFiles/hw2stats_geneus.dir/rule:
-	cd /home/shared/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 hw2stats/CMakeFiles/hw2stats_geneus.dir/rule
-.PHONY : hw2stats/CMakeFiles/hw2stats_geneus.dir/rule
-
-# Convenience name for target.
-hw2stats_geneus: hw2stats/CMakeFiles/hw2stats_geneus.dir/rule
-
-.PHONY : hw2stats_geneus
-
-# fast build rule for target.
-hw2stats_geneus/fast:
-	cd /home/shared/catkin_ws/build && $(MAKE) -f hw2stats/CMakeFiles/hw2stats_geneus.dir/build.make hw2stats/CMakeFiles/hw2stats_geneus.dir/build
-.PHONY : hw2stats_geneus/fast
-
 src/kalmanFilter.o: src/kalmanFilter.cpp.o
 
 .PHONY : src/kalmanFilter.o
@@ -456,14 +471,17 @@ help:
 	@echo "... install/local"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... hw2stats_gencpp"
 	@echo "... hw2stats_generate_messages_cpp"
 	@echo "... list_install_components"
 	@echo "... hw2stats_generate_messages"
+	@echo "... hw2stats_gencpp"
+	@echo "... _hw2stats_generate_messages_check_deps_offensivePlay"
 	@echo "... _hw2stats_generate_messages_check_deps_gameStatsMsg"
 	@echo "... kalmanFilter"
+	@echo "... _hw2stats_generate_messages_check_deps_rocketState"
 	@echo "... hw2stats_generate_messages_eus"
-	@echo "... _hw2stats_generate_messages_check_deps_offensivePlay"
+	@echo "... test"
+	@echo "... hw2stats_geneus"
 	@echo "... install"
 	@echo "... hw2stats_generate_messages_lisp"
 	@echo "... hw2stats_generate_messages_py"
@@ -472,8 +490,6 @@ help:
 	@echo "... hw2stats_gennodejs"
 	@echo "... hw2stats_genpy"
 	@echo "... offensiveStats"
-	@echo "... hw2stats_geneus"
-	@echo "... test"
 	@echo "... src/kalmanFilter.o"
 	@echo "... src/kalmanFilter.i"
 	@echo "... src/kalmanFilter.s"

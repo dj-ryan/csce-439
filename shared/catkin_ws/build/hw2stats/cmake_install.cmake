@@ -41,6 +41,7 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/hw2stats/msg" TYPE FILE FILES
     "/home/shared/catkin_ws/src/hw2stats/msg/offensivePlay.msg"
     "/home/shared/catkin_ws/src/hw2stats/msg/gameStatsMsg.msg"
+    "/home/shared/catkin_ws/src/hw2stats/msg/rocketState.msg"
     )
 endif()
 
