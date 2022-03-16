@@ -48,8 +48,14 @@ echo
 echo
 
 #Run the serial bridge script (loops forever)
-/serial_bridge_script.sh
- 
+#/serial_bridge_script.sh
+
+while :
+do
+	sleep 1
+done
+
+
 #Just run terminal at this point...
 #exec "$@"
 

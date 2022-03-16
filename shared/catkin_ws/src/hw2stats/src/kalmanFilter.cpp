@@ -4,6 +4,7 @@
 
 #include <unistd.h>
 #include <stdlib.h>
+#include <string>
 
 #include <Eigen/Dense>
 
@@ -80,20 +81,33 @@ void groundtruthAccelerationCallback(const std_msgs::Float64 &msg)
 
 /* === Debug function deffinitions === */
 
-void debugPrint3x3Matrix(Eigen::Matrix<float, 3, 3> matrix)
+void debugPrint3x3Matrix(Eigen::Matrix<float, 3, 3> matrix, const char *name)
 {
-  ROS_INFO("3x3 =");
+  ROS_INFO("%s =", name);
   ROS_INFO("  [ %f  %f  %f", matrix(0, 0), matrix(0, 1), matrix(0, 2));
   ROS_INFO("    %f  %f  %f", matrix(1, 0), matrix(1, 1), matrix(1, 2));
   ROS_INFO("    %f  %f  %f ]", matrix(2, 0), matrix(2, 1), matrix(2, 2));
 }
 
-void debugPrint3x1Matrix(Eigen::Matrix<float, 3, 1> matrix)
+void debugPrint3x1Matrix(Eigen::Matrix<float, 3, 1> matrix, const char *name)
 {
-  ROS_INFO("3x1 =");
+  ROS_INFO("%s =", name);
   ROS_INFO("  [ %f", matrix(0, 0));
   ROS_INFO("    %f", matrix(1, 0));
   ROS_INFO("    %f ]", matrix(2, 0));
+}
+
+void debugPrint2x3Matrix(Eigen::Matrix<float, 2, 3> matrix, const char *name)
+{
+  ROS_INFO("%s =", name);
+  ROS_INFO("  [ %f  %f  %f ", matrix(0, 0), matrix(0, 1), matrix(0, 2));
+  ROS_INFO("    %f  %f  %f ]", matrix(1, 0), matrix(1, 1), matrix(1, 2));
+}
+
+void debugPrint1x1Matrix(Eigen::Matrix<float, 1, 1> matrix, const char *name)
+{
+  ROS_INFO("%s =", name);
+  ROS_INFO("  [ %f ]");
 }
 
 Eigen::Matrix<float, 3, 1> debugDeltaGroundVsPredicted(Eigen::Matrix<float, 3, 1> matrix, GroundData groundData)
@@ -125,8 +139,8 @@ void calculatePredictionStep(Eigen::Matrix<float, 3, 1> *x_predict,
                              Eigen::Matrix<float, 3, 3> *p_predict,
                              Eigen::Matrix<float, 3, 3> A,
                              Eigen::Matrix<float, 3, 1> x_old,
-                             Eigen::Matrix<float, 3, 3> B,
-                             Eigen::Matrix<float, 3, 1> u,
+                             Eigen::Matrix<float, 3, 1> B,
+                             Eigen::Matrix<float, 1, 1> u,
                              Eigen::Matrix<float, 3, 3> p_old,
                              Eigen::Matrix<float, 3, 3> Q)
 {
@@ -143,6 +157,12 @@ void calculatePredictionStep(Eigen::Matrix<float, 3, 1> *x_predict,
    */
   *x_predict = (A * x_old) + (B * u);
 
+  debugPrint3x1Matrix(*x_predict, "x_predict");
+  debugPrint3x1Matrix(x_old, "x_old");
+  debugPrint1x1Matrix(u, "u");
+  // ROS_INFO("u = [ %f ]", u(0,0));
+  // debugPrint3x1Matrix(u, "u");
+
   /*
    * The a priori error covariance based on
    * the previous step and the process noise covariance
@@ -154,7 +174,7 @@ void calculatePredictionStep(Eigen::Matrix<float, 3, 1> *x_predict,
 void calculateCorrectionStep(Eigen::Matrix<float, 3, 1> *x_correct,
                              Eigen::Matrix<float, 3, 3> *p_correct,
                              Eigen::Matrix<float, 3, 3> p_predict,
-                             Eigen::Matrix<float, 3, 3> H,
+                             Eigen::Matrix<float, 2, 3> H,
                              Eigen::Matrix<float, 3, 3> R,
                              Eigen::Matrix<float, 3, 1> z,
                              Eigen::Matrix<float, 3, 1> x_predict)
@@ -191,7 +211,7 @@ void calculateCorrectionStep(Eigen::Matrix<float, 3, 1> *x_correct,
   /*
    * The a posteriori state estament based on the actually measurements the process
    */
-  *x_correct = x_predict + residual;
+  //*x_correct = x_predict + residual;
 
   /*
    * The a posteriori error covariance correction
@@ -226,9 +246,8 @@ int main(int argc, char **argv)
   ros::Publisher predictedAcceleration = n.advertise<std_msgs::Float64>("predicted/acceleration", 1000);
   ros::Publisher trueRocketState = n.advertise<hw2stats::rocketState>("trueRocketState", 1000);
   ros::Publisher predictedKalmanState = n.advertise<hw2stats::rocketState>("predictedKalmanState", 1000);
-  
 
-  ros::Rate loop_rate(100);
+  ros::Rate loop_rate(10);
 
   // Initalize matrices A, B, H, Q, R, X, P, u, z
 
@@ -237,43 +256,42 @@ int main(int argc, char **argv)
    * time step to the state at the current step
    */
   Eigen::Matrix<float, 3, 3> A;
-  A << 0, 0, 0,
-      0, 0.1, 0,
-      0, 0, 0.1;
+  A << 1, 1, 0.5,
+      0, 1, 1,
+      0, 0, 1;
 
   /*
    * Matrix B relates the current control
    * value to the a priori state
    */
-  Eigen::Matrix<float, 3, 3> B;
-  B << 0, 0, 0,
-      0, 0, 0,
-      0, 0, 1;
+  Eigen::Matrix<float, 3, 1> B;
+  B << 0,
+      0,
+      1;
 
   /*
    * Relates the state to the measurement zk
    * Initalized to an identity matrix for now
    */
-  Eigen::Matrix<float, 3, 3> H;
-  H << 1, 0, 0,
-      0, 1, 0,
+  Eigen::Matrix<float, 2, 3> H;
+  H << 0, 1, 0,
       0, 0, 1;
 
   /*
    * Process noise covariance
    */
   Eigen::Matrix<float, 3, 3> Q;
-  Q << 0.1, 0, 0,
-      0, 0.1, 0,
-      0, 0, 0.1;
+  Q << 0, 0, 0,
+      0, 0, 0,
+      0, 0, 0;
 
   /*
    * Measurment noise covariance
    */
   Eigen::Matrix<float, 3, 3> R;
-  R << 1, 0, 0,
-      0, 1, 0,
-      0, 0, 1;
+  R << 0, 0, 0,
+      0, 0, 0,
+      0, 0, 0;
 
   /*
    * State
@@ -304,12 +322,10 @@ int main(int argc, char **argv)
   Eigen::Matrix<float, 3, 3> p_old;
   p_old = p_predict;
 
-  Eigen::Matrix<float, 3, 1> u;
-  u << 0,
-      0,
-      0;
+  Eigen::Matrix<float, 1, 1> u;
+  u << 0;
 
-  Eigen::Matrix<float, 3, 1> u_old;
+  Eigen::Matrix<float, 1, 1> u_old;
   u_old = u;
 
   Eigen::Matrix<float, 3, 1> z;
@@ -321,26 +337,30 @@ int main(int argc, char **argv)
   {
     // print matrices A, B, H, Q, R, K, X, P, u, z
     ROS_INFO("=== Kalman filter setup ===");
-    ROS_INFO("A:");
-    debugPrint3x3Matrix(A);
-
-    ROS_INFO("B:");
-    debugPrint3x3Matrix(B);
-
-    ROS_INFO("H:");
-    debugPrint3x3Matrix(H);
-
-    ROS_INFO("Q:");
-    debugPrint3x3Matrix(Q);
-
-    ROS_INFO("R:");
-    debugPrint3x3Matrix(R);
+    debugPrint3x3Matrix(A, "A");
+    debugPrint3x1Matrix(B, "B");
+    debugPrint2x3Matrix(H, "H");
+    debugPrint3x3Matrix(Q, "Q");
+    debugPrint3x3Matrix(R, "R");
   }
+
+  do
+  {
+    ROS_INFO("Waiting for rocket liftoff...");
+    x_predict(0, 0) = groundData.altitude;
+    x_predict(1, 0) = groundData.velocity;
+    x_predict(2, 0) = groundData.acceleration;
+    ros::spinOnce();
+  } while (groundData.altitude == 0);
+
+  ROS_INFO("Liftoff!!!");
+  debugPrint3x1Matrix(x_predict, "liftoff starting point");
 
   /* main loop */
 
   while (ros::ok())
   {
+    // wait for rocket lift off
 
     /* grab current values */
     // This is the only element of the controll matrix that needs to be updated because it is the only paramater provided.
@@ -364,24 +384,22 @@ int main(int argc, char **argv)
 
     if (debug)
     {
-      ROS_INFO("ground delta: ");
-      debugPrint3x1Matrix(debugDeltaGroundVsPredicted(x_correct, groundData));
+      debugPrint3x1Matrix(debugDeltaGroundVsPredicted(x_predict, groundData), "ground delta: ");
     }
     std_msgs::Float64 altitudePublished;
     std_msgs::Float64 velocityPublished;
     std_msgs::Float64 accelerationPublished;
 
-    altitudePublished.data = p_correct(0, 0);
-    velocityPublished.data = p_correct(1, 0);
-    accelerationPublished.data = p_correct(2, 0);
-
-    
+    altitudePublished.data = x_predict(0, 0);
+    velocityPublished.data = x_predict(1, 0);
+    accelerationPublished.data = x_predict(2, 0);
 
     predictedAltitude.publish(altitudePublished);
     predictedVelocity.publish(velocityPublished);
     predictedAcceleration.publish(accelerationPublished);
 
-    if(debugTopics) {
+    if (debugTopics)
+    {
       hw2stats::rocketState currentTrueRocketState;
       hw2stats::rocketState currentPredictedKalmanState;
 
@@ -391,16 +409,15 @@ int main(int argc, char **argv)
 
       currentTrueRocketState.header.stamp = ros::Time::now();
 
-      currentPredictedKalmanState.altitude = p_correct(0,0);
-      currentPredictedKalmanState.velocity = p_correct(1,0);
-      currentPredictedKalmanState.acceleration  = p_correct(2,0);
+      currentPredictedKalmanState.altitude = x_predict(0, 0);
+      currentPredictedKalmanState.velocity = x_predict(1, 0);
+      currentPredictedKalmanState.acceleration = x_predict(2, 0);
 
       currentPredictedKalmanState.header.stamp = ros::Time::now();
 
       trueRocketState.publish(currentTrueRocketState);
       predictedKalmanState.publish(currentPredictedKalmanState);
     }
-
     // get all available messages
     ros::spinOnce();
 
